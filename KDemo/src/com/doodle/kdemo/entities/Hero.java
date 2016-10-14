@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.doodle.kdemo.common.BaseActor;
+import com.doodle.kdemo.scenes.GameScene;
 import com.doodle.kdemo.utils.SV;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
@@ -14,6 +15,7 @@ import com.esotericsoftware.spine.Skeleton;
 import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
+import com.esotericsoftware.spine.SkeletonRendererDebug;
 
 public class Hero extends BaseActor {
 	
@@ -21,22 +23,31 @@ public class Hero extends BaseActor {
 	private AnimationState state;
 	private Camera camera;
 	
+	private boolean DEBUG = false;
 	private PolygonSpriteBatch polygonBatch = new PolygonSpriteBatch();
 	private SkeletonRenderer renderer;
+	private SkeletonRendererDebug debugRender;
 	
+	private Camera mainCamera;
 	
-	public Hero(){
+	private GameScene m_gameScene;
+	
+	public Hero(GameScene scene){
 		this.setTag(SV.TAG_HERO);
+		
+		m_gameScene = scene;
+		this.mainCamera = scene.cam;
 		
 		this.camera = new OrthographicCamera(SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT);
 		this.renderer = new SkeletonRenderer();
 		
 		TextureAtlas texAtls = new TextureAtlas(Gdx.files.internal("animations/spineboy.atlas"));
 		SkeletonJson sklJson = new SkeletonJson(texAtls);
-		sklJson.setScale(0.6f);
+		sklJson.setScale(0.3f);
 		SkeletonData sklData = sklJson.readSkeletonData(Gdx.files.internal("animations/spineboy.json"));
 		heroSkeleton = new Skeleton(sklData);
 		heroSkeleton.setPosition(this.getX(), this.getY());
+
 		
 		AnimationStateData stateData = new AnimationStateData(sklData);
 		stateData.setDefaultMix(0.2f);
@@ -44,6 +55,15 @@ public class Hero extends BaseActor {
 		
 		this.speed_x = 200;
 		this.speed_y = 50;
+		
+		if(DEBUG){
+			debugRender = new SkeletonRendererDebug();
+			debugRender.setBones(false);
+			debugRender.setBoundingBoxes(false);
+			debugRender.setMeshHull(true);
+			debugRender.setPremultipliedAlpha(true);
+			debugRender.setRegionAttachments(true);
+		}
 	}
 
 
@@ -56,17 +76,31 @@ public class Hero extends BaseActor {
 		state.update(delta);	
 		state.apply(heroSkeleton);
 		heroSkeleton.updateWorldTransform();
+		
+		mainCameraFollowHero();
 	}
 
+	private void mainCameraFollowHero(){
+		if(this.getX() > SV.WINDOW_WIDTH/2 && this.getX() < m_gameScene.MAP_MAX_WINDTH - SV.WINDOW_WIDTH/2){
+			mainCamera.position.x = this.getX();
+			
+		}
+	}
+	
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		// TODO Auto-generated method stub
 		super.draw(batch, parentAlpha);
+		batch.end();
 		polygonBatch.begin();
 		polygonBatch.setProjectionMatrix(batch.getProjectionMatrix());
 		renderer.draw(polygonBatch, heroSkeleton);
+		if(DEBUG){
+			debugRender.draw(heroSkeleton);
+		}
 		polygonBatch.end();
+		batch.begin();
 	}
 
 

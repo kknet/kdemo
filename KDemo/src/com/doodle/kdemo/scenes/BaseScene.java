@@ -17,7 +17,7 @@ public abstract class BaseScene implements Screen {
 	
 	private SpriteBatch batch;
 	private Stage stage;
-	protected PerspectiveCamera cam;
+	public  PerspectiveCamera cam;
 	protected boolean isPause;
 	
 	protected boolean DEBUG = SV.DEBUG;
