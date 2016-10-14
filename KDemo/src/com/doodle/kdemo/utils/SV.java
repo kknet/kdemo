@@ -32,5 +32,15 @@ public class SV {
 	public static final int LOG_DEBUG = Application.LOG_DEBUG;
 	public static final int LOG_INFO = Application.LOG_INFO;
 	public static final int LOG_ERROR = Application.LOG_ERROR;
+	
+	
+	//常用的BaseActor的TAG，int类型
+	public static final int TAG_NONE = 0;
+	public static final int TAG_HERO = 1;
+	
+	
+	//物理相关
+	public static final float PHYSICS_TIME_SPAN = 1/50f;	 //物理帧时间
+	public static final float SPEED_OF_DECAY = 100; 		// 单位：像素/每平方秒
 
 }

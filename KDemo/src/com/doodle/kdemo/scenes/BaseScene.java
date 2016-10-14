@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.doodle.kdemo.managers.TM;
 import com.doodle.kdemo.utils.SV;
@@ -13,52 +15,87 @@ import com.doodle.kdemo.utils.SV;
 public abstract class BaseScene implements Screen {
 	
 	
-	protected SpriteBatch batch;
-	protected Stage stage;
+	private SpriteBatch batch;
+	private Stage stage;
 	protected PerspectiveCamera cam;
 	protected boolean isPause;
 	
 	protected boolean DEBUG = SV.DEBUG;
 	protected int numDrawCalls = 0;
 	protected BitmapFont font;
-	
+	protected Group paintGroup;
+	protected Group debugGroup;
 
 	public BaseScene(){
 		
 		batch = new SpriteBatch();
 		stage = new Stage(SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT, SV.WINDOW_SCALE_MODE, batch);
-		cam = new PerspectiveCamera(67, SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT);
+		
+		//设置透视相机
+		cam = new PerspectiveCamera(60.0f, SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT);		
+		cam.far = 1000;
+		cam.position.x = 400;
+		cam.position.y = 240;
+		cam.position.z = (float) (240 / Math.tan(30.0f / 180.0f * Math.PI ));
 		stage.setCamera(cam);
+		
+		
 		isPause = false;
-		font = new BitmapFont();
+		
+		
+		
+		paintGroup = new Group();
+		stage.addActor(paintGroup);
+		
+		//调试信息
+		if(DEBUG){
+			font = new BitmapFont();			
+			
+			Group debugGroup = new Group(){
+
+				@Override
+				public void draw(SpriteBatch batch, float parentAlpha) {
+					// TODO Auto-generated method stub
+					super.draw(batch, parentAlpha);
+					numDrawCalls = batch.renderCalls;
+				}
+				
+			};
+			stage.addActor(debugGroup);
+		}
+		
 	}
 
+	
+	private float delayTime = 0;
 	
 	//除非必要，否则不用重写此方法
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-		//定时器步进不受渲染暂停影响，如果需要所有定时器暂停，请调用TM.instance().pause()，
-		//所有定时器暂停后，体力将不会刷新直到调用了TM.instance.resume()
-		//需要暂停某个特定计时器，可以调用KTimer实例中的pause();
-		
-		TM.instance().step(delta);
+		if(isPause)
+			return;		
 		
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		numDrawCalls = 0;
-		if(this.isPause == false){
+		delayTime += delta;
+		while(delayTime >= SV.PHYSICS_TIME_SPAN){
+			delayTime -= SV.PHYSICS_TIME_SPAN;
+			TM.instance().step(delta);	
 			stage.act(delta);
-			stage.draw();
 		}
 		
+		stage.draw();
+		
+		//调试信息
 		if(DEBUG){
-
 			batch.begin();
 			font.draw(batch, "DrawCalls : " + numDrawCalls, 20, 100);
-			font.draw(batch, "NativeHeap: " + Gdx.app.getNativeHeap(), 20, 70);
-			font.draw(batch, "JavaHeap  : " + Gdx.app.getJavaHeap(), 20, 40);
+			font.draw(batch, "NativeHeap: " + Gdx.app.getNativeHeap() / 1024f / 1024f + " Mb", 20, 70);
+			font.draw(batch, "JavaHeap  : " + Gdx.app.getJavaHeap()/1024f/1024f + " Mb", 20, 40);
 			batch.end();
+			
+			numDrawCalls = 0;
 		}
 	}
 
@@ -71,7 +108,7 @@ public abstract class BaseScene implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-
+		Gdx.input.setInputProcessor(stage);
 	}
 
 	@Override

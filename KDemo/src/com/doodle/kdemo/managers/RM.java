@@ -72,10 +72,10 @@ private static RM s_instance;
 	//获取纹理集
 	public TextureAtlas getTexAtls(String texAtlsName){		
 		if(!this.isLoaded(PREFIX_OF_TEX_ATLS + texAtlsName, TextureAtlas.class)){
-			this.load(PREFIX_OF_TEX_ATLS, TextureAtlas.class);
+			this.load(PREFIX_OF_TEX_ATLS + texAtlsName, TextureAtlas.class);
 			this.finishLoading();
 		}
-		return this.get(PREFIX_OF_TEX_ATLS, TextureAtlas.class);
+		return this.get(PREFIX_OF_TEX_ATLS + texAtlsName, TextureAtlas.class);
 	}
 	
 	
