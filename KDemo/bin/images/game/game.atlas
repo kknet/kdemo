@@ -17,6 +17,13 @@ bg2
   orig: 800, 480
   offset: 0, 0
   index: -1
+hero_pos
+  rotate: false
+  xy: 803, 943
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
 
 game2.png
 format: RGBA8888
