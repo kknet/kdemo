@@ -1,5 +1,6 @@
 package com.doodle.kdemo.common;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.doodle.kdemo.managers.BAM;
 import com.doodle.kdemo.managers.LM;
@@ -28,6 +29,8 @@ public class BaseActor extends Actor {
 	public int y_dir = STOP;
 	public int z_dir = STOP;  //ÌøÔ¾·½ÏòÎªzÖá
 	
+	protected Vector2 lastPos = new Vector2();
+	
 	public void setTag(int tag){
 		if(this.tag != tag ){
 			BAM.instance().delBaseActor(this.tag);
@@ -39,11 +42,14 @@ public class BaseActor extends Actor {
 	public int getTag(){
 		return tag;
 	}
-
+	
 	
 	@Override
 	public void act(float delta) {
 		// TODO Auto-generated method stub
+		lastPos.x = this.getX();
+		lastPos.y = this.getY();
+		
 		if(onGround){
 			this.translate(speed_x * x_dir * delta, speed_y * y_dir * delta );
 		}else{

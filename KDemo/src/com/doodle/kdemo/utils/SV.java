@@ -40,7 +40,9 @@ public class SV {
 	
 	
 	//物理相关
-	public static final float PHYSICS_TIME_SPAN = 1/50f;	 //物理帧时间
-	public static final float SPEED_OF_DECAY = 100; 		// 单位：像素/每平方秒
+	public static final float PHYSICS_TIME_SPAN = 1/50f;	//物理帧时间
+	public static final int VEL_ITRT = 6;					//速度计算迭代次数
+	public static final int POS_ITRT = 4;					//位置计算迭代次数
+	public static final float SPEED_OF_DECAY = 200; 		// 单位：像素/每平方秒
 
 }

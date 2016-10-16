@@ -6,7 +6,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.doodle.kdemo.common.BaseActor;
+import com.doodle.kdemo.managers.PWM;
 import com.doodle.kdemo.scenes.GameScene;
 import com.doodle.kdemo.utils.SV;
 import com.esotericsoftware.spine.AnimationState;
@@ -28,12 +31,15 @@ public class Hero extends BaseActor {
 	private SkeletonRenderer renderer;
 	private SkeletonRendererDebug debugRender;
 	
+	
 	private Camera mainCamera;
 	
 	private GameScene m_gameScene;
 	
+	
 	public Hero(GameScene scene){
 		this.setTag(SV.TAG_HERO);
+		this.setPosition(50, 40);
 		
 		m_gameScene = scene;
 		this.mainCamera = scene.cam;
@@ -53,8 +59,8 @@ public class Hero extends BaseActor {
 		stateData.setDefaultMix(0.2f);
 		state = new AnimationState(stateData);
 		
-		this.speed_x = 200;
-		this.speed_y = 50;
+		this.speed_x = 300;
+		this.speed_y = 200;
 		
 		if(DEBUG){
 			debugRender = new SkeletonRendererDebug();
@@ -71,17 +77,36 @@ public class Hero extends BaseActor {
 	public void act(float delta) {
 		// TODO Auto-generated method stub
 		super.act(delta);
-	
+		
+		if(PWM.instance().pointIsInObstacle(this.getX(), this.getY())){
+			if(!PWM.instance().pointIsInObstacle(this.getX(), lastPos.y)){
+				this.setPosition(this.getX(), lastPos.y);
+			}else if(!PWM.instance().pointIsInObstacle(lastPos.x, this.getY())){
+				this.setPosition(lastPos.x, this.getY());
+			}else{
+				this.setPosition(lastPos.x, lastPos.y);
+			}
+			
+			this.lastPos.x = this.getX();
+			this.lastPos.y = this.getY();
+			
+		}				
+		
+		System.out.println("x=" + this.getX());
+		System.out.println("y=" + this.getY());
 		heroSkeleton.setPosition(this.getX(), this.getY());
+		
 		state.update(delta);	
 		state.apply(heroSkeleton);
 		heroSkeleton.updateWorldTransform();
 		
 		mainCameraFollowHero();
+		
+		
 	}
 
 	private void mainCameraFollowHero(){
-		if(this.getX() > SV.WINDOW_WIDTH/2 && this.getX() < m_gameScene.MAP_MAX_WINDTH - SV.WINDOW_WIDTH/2){
+		if(this.getX() > SV.WINDOW_WIDTH/2 && this.getX() < m_gameScene.map.MAP_MAX_WINDTH - SV.WINDOW_WIDTH/2){
 			mainCamera.position.x = this.getX();
 			
 		}
@@ -99,7 +124,8 @@ public class Hero extends BaseActor {
 		if(DEBUG){
 			debugRender.draw(heroSkeleton);
 		}
-		polygonBatch.end();
+		polygonBatch.end();	
+		
 		batch.begin();
 	}
 

@@ -11,23 +11,25 @@
 					<density>2</density>
 					<friction>0</friction>
 					<restitution>0</restitution>
-					<filter_categoryBits>1</filter_categoryBits>
-					<filter_groupIndex>-1</filter_groupIndex>
-					<filter_maskBits>2</filter_maskBits>
+					<filter_categoryBits>0</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>0</filter_maskBits>
 					<fixture_type>POLYGON</fixture_type>
 
 
 					<polygons>
 
-                        <polygon>  558.0000, 205.0000  ,  620.0000, 230.0000  ,  645.0000, 247.0000  ,  503.0000, 222.0000 </polygon>
+                        <polygon>  801.0000, 481.0000  ,  0.0000, 482.0000  ,  217.0000, 236.0000  ,  371.0000, 233.0000  ,  618.0000, 247.0000  ,  803.0000, 278.0000 </polygon>
 
-                        <polygon>  0.0000, 480.0000  ,  -2.0000, 235.0000  ,  745.0000, 252.0000  ,  800.0000, 480.0000 </polygon>
+                        <polygon>  595.0000, 220.0000  ,  618.0000, 247.0000  ,  371.0000, 233.0000  ,  530.0000, 209.0000 </polygon>
 
-                        <polygon>  800.0000, 285.0000  ,  800.0000, 480.0000  ,  745.0000, 252.0000 </polygon>
+                        <polygon>  763.0000, 254.0000  ,  803.0000, 278.0000  ,  618.0000, 247.0000  ,  705.0000, 249.0000 </polygon>
 
-                        <polygon>  503.0000, 222.0000  ,  645.0000, 247.0000  ,  269.0000, 237.0000 </polygon>
+                        <polygon>  217.0000, 236.0000  ,  0.0000, 482.0000  ,  34.0000, 222.0000  ,  80.0000, 222.0000 </polygon>
 
-                        <polygon>  74.0000, 222.0000  ,  269.0000, 237.0000  ,  -2.0000, 235.0000 </polygon>
+                        <polygon>  0.0000, 482.0000  ,  0.0000, -1.0000  ,  33.0000, 22.0000  ,  34.0000, 222.0000 </polygon>
+
+                        <polygon>  800.0000, 24.0000  ,  33.0000, 22.0000  ,  0.0000, -1.0000  ,  802.0000, 0.0000 </polygon>
 
 					</polygons>
 
@@ -44,29 +46,49 @@
 					<density>2</density>
 					<friction>0</friction>
 					<restitution>0</restitution>
-					<filter_categoryBits>1</filter_categoryBits>
-					<filter_groupIndex>-1</filter_groupIndex>
-					<filter_maskBits>2</filter_maskBits>
+					<filter_categoryBits>0</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>0</filter_maskBits>
 					<fixture_type>POLYGON</fixture_type>
 
 
 					<polygons>
 
-                        <polygon>  -1.0000, 217.0000  ,  172.0000, 201.0000  ,  328.0000, 203.0000  ,  209.0909, 306.3636  ,  149.0000, 304.0000  ,  96.0000, 291.0000 </polygon>
+                        <polygon>  -1.0000, 275.0000  ,  120.0000, 321.0000  ,  -1.0000, 442.0000 </polygon>
 
-                        <polygon>  -1.0000, 282.0000  ,  88.0000, 319.0000  ,  0.0000, 480.0000 </polygon>
+                        <polygon>  2.0000, 221.0000  ,  125.0000, 200.0000  ,  301.0000, 196.0000  ,  262.0000, 304.0000  ,  138.0000, 300.0000 </polygon>
 
-                        <polygon>  88.0000, 319.0000  ,  244.0000, 336.0000  ,  276.0000, 359.0000  ,  0.0000, 480.0000 </polygon>
+                        <polygon>  262.0000, 304.0000  ,  301.0000, 196.0000  ,  399.0000, 226.0000  ,  381.0000, 341.0000 </polygon>
 
-                        <polygon>  209.0909, 306.3636  ,  328.0000, 203.0000  ,  447.0000, 233.0000  ,  288.0000, 314.0000 </polygon>
+                        <polygon>  120.0000, 321.0000  ,  268.0000, 341.0000  ,  275.0000, 391.0000  ,  -1.0000, 482.0000  ,  -1.0000, 442.0000 </polygon>
 
-                        <polygon>  288.0000, 314.0000  ,  447.0000, 233.0000  ,  537.0000, 216.0000  ,  369.0000, 337.0000 </polygon>
+                        <polygon>  800.0000, 224.0000  ,  802.0000, 479.0000  ,  381.0000, 341.0000  ,  533.0000, 216.0000  ,  708.0000, 204.0000 </polygon>
 
-                        <polygon>  800.0000, 229.0000  ,  800.0000, 480.0000  ,  369.0000, 337.0000  ,  537.0000, 216.0000  ,  709.0000, 206.0000 </polygon>
+                        <polygon>  399.0000, 226.0000  ,  438.0000, 226.0000  ,  381.0000, 341.0000 </polygon>
 
-                        <polygon>  468.0000, 219.0000  ,  537.0000, 216.0000  ,  447.0000, 233.0000 </polygon>
+                        <polygon>  438.0000, 226.0000  ,  475.0000, 216.0000  ,  533.0000, 216.0000  ,  381.0000, 341.0000 </polygon>
 
-                        <polygon>  800.0000, 480.0000  ,  0.0000, 480.0000  ,  276.0000, 359.0000  ,  369.0000, 337.0000 </polygon>
+                        <polygon>  329.0000, 354.0000  ,  381.0000, 341.0000  ,  802.0000, 479.0000  ,  275.0000, 391.0000 </polygon>
+
+                        <polygon>  802.0000, 479.0000  ,  -1.0000, 482.0000  ,  275.0000, 391.0000 </polygon>
+
+					</polygons>
+
+				</fixture>
+
+				<fixture>
+					<density>2</density>
+					<friction>0</friction>
+					<restitution>0</restitution>
+					<filter_categoryBits>1</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>65535</filter_maskBits>
+					<fixture_type>POLYGON</fixture_type>
+
+
+					<polygons>
+
+                        <polygon>  0.0000, 24.0000  ,  0.0000, 0.0000  ,  803.0000, 0.0000  ,  802.0000, 24.0000 </polygon>
 
 					</polygons>
 
@@ -83,19 +105,39 @@
 					<density>2</density>
 					<friction>0</friction>
 					<restitution>0</restitution>
-					<filter_categoryBits>1</filter_categoryBits>
-					<filter_groupIndex>-1</filter_groupIndex>
-					<filter_maskBits>2</filter_maskBits>
+					<filter_categoryBits>0</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>0</filter_maskBits>
 					<fixture_type>POLYGON</fixture_type>
 
 
 					<polygons>
 
-                        <polygon>  613.0000, 225.0000  ,  615.0000, 480.0000  ,  0.0000, 480.0000  ,  110.0000, 230.0000  ,  217.0000, 220.0000 </polygon>
+                        <polygon>  0.0000, 220.0000  ,  217.0000, 226.0000  ,  611.0000, 478.0000  ,  -1.0000, 481.0000 </polygon>
 
-                        <polygon>  0.0000, 222.0000  ,  110.0000, 230.0000  ,  0.0000, 480.0000 </polygon>
+                        <polygon>  611.0000, 225.0000  ,  611.0000, 478.0000  ,  217.0000, 226.0000  ,  432.0000, 216.0000 </polygon>
 
-                        <polygon>  310.0000, 190.0000  ,  461.0000, 222.0000  ,  217.0000, 220.0000 </polygon>
+                        <polygon>  217.0000, 226.0000  ,  258.0000, 197.0000  ,  405.0000, 197.0000  ,  432.0000, 216.0000 </polygon>
+
+					</polygons>
+
+				</fixture>
+
+				<fixture>
+					<density>2</density>
+					<friction>0</friction>
+					<restitution>0</restitution>
+					<filter_categoryBits>1</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>65535</filter_maskBits>
+					<fixture_type>POLYGON</fixture_type>
+
+
+					<polygons>
+
+                        <polygon>  588.0000, 237.0000  ,  587.0000, 22.0000  ,  614.0000, 0.0000  ,  618.0000, 253.0000 </polygon>
+
+                        <polygon>  0.0000, 24.0000  ,  1.0000, -5.0000  ,  614.0000, 0.0000  ,  587.0000, 22.0000 </polygon>
 
 					</polygons>
 
@@ -107,26 +149,6 @@
 		<body name="hero_pos">
             <anchorpoint>0.0000,0.0000</anchorpoint>
 			<fixtures>
-
-				<fixture>
-					<density>2</density>
-					<friction>0</friction>
-					<restitution>0</restitution>
-					<filter_categoryBits>2</filter_categoryBits>
-					<filter_groupIndex>-1</filter_groupIndex>
-					<filter_maskBits>1</filter_maskBits>
-					<fixture_type>POLYGON</fixture_type>
-
-					<isSensor/>
-
-
-					<polygons>
-
-                        <polygon>  17.0000, 2.0000  ,  20.0000, 15.0000  ,  10.0000, 19.0000  ,  0.0000, 15.0000  ,  4.0000, 2.0000 </polygon>
-
-					</polygons>
-
-				</fixture>
 
 			</fixtures>
 		</body>

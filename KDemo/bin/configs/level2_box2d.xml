@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created with http://www.physicseditor.de -->
+<bodydef version="1.0">
+	<bodies>
+
+		<body name="level2_bg1">
+            <anchorpoint>0.0000,0.0000</anchorpoint>
+			<fixtures>
+
+				<fixture>
+					<density>2</density>
+					<friction>0</friction>
+					<restitution>0</restitution>
+					<filter_categoryBits>1</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>0</filter_maskBits>
+					<fixture_type>POLYGON</fixture_type>
+
+
+					<polygons>
+
+                        <polygon>  799.0000, 237.0000  ,  799.0000, 481.0000  ,  -1.0000, 481.0000  ,  32.0000, 236.0000 </polygon>
+
+                        <polygon>  -1.0000, 481.0000  ,  0.0000, 0.0000  ,  32.0000, 39.0000  ,  32.0000, 236.0000 </polygon>
+
+                        <polygon>  800.0000, 40.0000  ,  32.0000, 39.0000  ,  0.0000, 0.0000  ,  800.0000, 0.0000 </polygon>
+
+					</polygons>
+
+				</fixture>
+
+			</fixtures>
+		</body>
+
+		<body name="level2_bg2">
+            <anchorpoint>0.0000,0.0000</anchorpoint>
+			<fixtures>
+
+				<fixture>
+					<density>2</density>
+					<friction>0</friction>
+					<restitution>0</restitution>
+					<filter_categoryBits>1</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>0</filter_maskBits>
+					<fixture_type>POLYGON</fixture_type>
+
+
+					<polygons>
+
+                        <polygon>  800.0000, 40.0000  ,  0.0000, 40.0000  ,  0.0000, 0.0000  ,  799.0000, 0.0000 </polygon>
+
+					</polygons>
+
+				</fixture>
+
+				<fixture>
+					<density>2</density>
+					<friction>0</friction>
+					<restitution>0</restitution>
+					<filter_categoryBits>1</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>65535</filter_maskBits>
+					<fixture_type>POLYGON</fixture_type>
+
+
+					<polygons>
+
+                        <polygon>  20.0000, 195.0000  ,  74.0000, 160.0000  ,  178.0018, 176.0018  ,  209.0000, 199.0000  ,  184.0000, 223.0000  ,  79.0000, 232.0000 </polygon>
+
+                        <polygon>  799.0000, 227.0000  ,  799.0000, 478.0000  ,  0.0000, 480.0000  ,  504.0000, 241.0000  ,  572.0000, 221.0000 </polygon>
+
+                        <polygon>  0.0000, 234.0000  ,  79.0000, 232.0000  ,  0.0000, 480.0000 </polygon>
+
+                        <polygon>  79.0000, 232.0000  ,  184.0000, 223.0000  ,  391.0000, 244.0000  ,  0.0000, 480.0000 </polygon>
+
+                        <polygon>  430.0000, 223.0000  ,  391.0000, 244.0000  ,  184.0000, 223.0000 </polygon>
+
+                        <polygon>  391.0000, 244.0000  ,  504.0000, 241.0000  ,  0.0000, 480.0000 </polygon>
+
+					</polygons>
+
+				</fixture>
+
+			</fixtures>
+		</body>
+
+		<body name="level2_bg3">
+            <anchorpoint>0.0000,0.0000</anchorpoint>
+			<fixtures>
+
+				<fixture>
+					<density>2</density>
+					<friction>0</friction>
+					<restitution>0</restitution>
+					<filter_categoryBits>1</filter_categoryBits>
+					<filter_groupIndex>0</filter_groupIndex>
+					<filter_maskBits>0</filter_maskBits>
+					<fixture_type>POLYGON</fixture_type>
+
+
+					<polygons>
+
+                        <polygon>  0.0000, 226.0000  ,  765.0000, 227.0000  ,  801.0000, 480.0000  ,  -1.0000, 480.0000 </polygon>
+
+                        <polygon>  801.0000, 480.0000  ,  765.0000, 227.0000  ,  765.0000, 39.0000  ,  800.0000, 0.0000 </polygon>
+
+                        <polygon>  0.0000, 40.0000  ,  0.0000, 0.0000  ,  800.0000, 0.0000  ,  765.0000, 39.0000 </polygon>
+
+					</polygons>
+
+				</fixture>
+
+			</fixtures>
+		</body>
+
+	</bodies>
+	<metadata>
+		<format>1</format>
+		<ptm_ratio>32</ptm_ratio>
+	</metadata>
+</bodydef>
+
+
+

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.doodle.kdemo.managers.PWM;
 import com.doodle.kdemo.managers.TM;
 import com.doodle.kdemo.utils.SV;
 
@@ -26,6 +27,7 @@ public abstract class BaseScene implements Screen {
 	protected Group paintGroup;
 	protected Group debugGroup;
 
+	
 	public BaseScene(){
 		
 		batch = new SpriteBatch();
@@ -81,6 +83,7 @@ public abstract class BaseScene implements Screen {
 		delayTime += delta;
 		while(delayTime >= SV.PHYSICS_TIME_SPAN){
 			delayTime -= SV.PHYSICS_TIME_SPAN;
+			PWM.instance().step(delta);
 			TM.instance().step(delta);	
 			stage.act(delta);
 		}

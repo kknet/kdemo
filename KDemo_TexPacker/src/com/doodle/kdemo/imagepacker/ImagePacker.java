@@ -11,10 +11,10 @@ public class ImagePacker {
 			"menu",
 			"loading",
 			"game",
-			"result",
+			//"result",
 		};
 
-		String input = "E:/android工程/kdemo/KDemo_TexPacker/assets/images/", output = "E:/android工程/kdemo/KDemo/assets/images/", packFileName = "";
+		String input = "E:/git库/kdemo/KDemo_TexPacker/assets/images/", output = "E:/git库/kdemo/KDemo/assets/images/", packFileName = "";
 		Settings settings = new Settings();
 		settings.filterMin = TextureFilter.Linear;
 		settings.filterMag = TextureFilter.Linear;

@@ -1,21 +1,23 @@
 package com.doodle.kdemo.scenes;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.InputAdapter;
+import com.doodle.kdemo.common.BaseLevelMap;
 import com.doodle.kdemo.entities.Hero;
-import com.doodle.kdemo.managers.RM;
+import com.doodle.kdemo.entities.LevelMap2;
+import com.doodle.kdemo.physics.Xml2Body;
 
 public class GameScene extends BaseScene {
 
 	public final float MAP_MAX_WINDTH = 2213f;
-	private Image bg1;
-	private Image bg2;
-	private Image bg3;
+
 	private Hero hero;
+	
+		
+	private Xml2Body physicsBodys = new Xml2Body("configs/level1_box2d.xml");
+	
+	public BaseLevelMap map;
 	
 	private InputAdapter input = new InputAdapter(){
 
@@ -67,24 +69,14 @@ public class GameScene extends BaseScene {
 	};
 	
 	public GameScene(){
-		TextureAtlas atlas =  RM.instance().getTexAtls("game/game.atlas");
-		Sprite tmp1 = atlas.createSprite("bg1");
-		bg1 = new Image(tmp1);
-		bg1.setPosition(0, 0);
-		paintGroup.addActor(bg1);
 		
-		tmp1 = atlas.createSprite("bg2");
-		bg2 = new Image(tmp1);
-		bg2.setPosition(800, 0);
-		paintGroup.addActor(bg2);
-		
-		tmp1 = atlas.createSprite("bg3");
-		bg3 = new Image(tmp1);
-		bg3.setPosition(1600, 0);
-		paintGroup.addActor(bg3);
+		map = new LevelMap2();
+		paintGroup.addActor(map);
 		
 		hero = new Hero(this);
-		paintGroup.addActor(hero);
+		paintGroup.addActor(hero);		
+		
+		
 	}
 
 	@Override
@@ -94,5 +86,7 @@ public class GameScene extends BaseScene {
 		Gdx.input.setInputProcessor(input);
 	}
 
+	
+	
 	
 }
