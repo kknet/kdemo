@@ -1,7 +1,10 @@
 package com.doodle.kdemo.scenes;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -15,9 +18,10 @@ import com.doodle.kdemo.utils.SV;
 
 public abstract class BaseScene implements Screen {
 	
-	
-	private SpriteBatch batch;
-	private Stage stage;
+	private SpriteBatch uiBatch;
+	private SpriteBatch gameBatch;
+	protected Stage gameStage;
+	protected Stage uiStage;
 	public  PerspectiveCamera cam;
 	protected boolean isPause;
 	
@@ -26,12 +30,12 @@ public abstract class BaseScene implements Screen {
 	protected BitmapFont font;
 	protected Group paintGroup;
 	protected Group debugGroup;
-
+	
 	
 	public BaseScene(){
 		
-		batch = new SpriteBatch();
-		stage = new Stage(SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT, SV.WINDOW_SCALE_MODE, batch);
+		gameBatch = new SpriteBatch();
+		gameStage = new Stage(SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT, SV.WINDOW_SCALE_MODE, gameBatch);
 		
 		//设置透视相机
 		cam = new PerspectiveCamera(60.0f, SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT);		
@@ -39,15 +43,18 @@ public abstract class BaseScene implements Screen {
 		cam.position.x = 400;
 		cam.position.y = 240;
 		cam.position.z = (float) (240 / Math.tan(30.0f / 180.0f * Math.PI ));
-		stage.setCamera(cam);
+		gameStage.setCamera(cam);
 		
 		
 		isPause = false;
 		
+		uiBatch = new SpriteBatch();
+		uiStage = new Stage(SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT, SV.WINDOW_SCALE_MODE, uiBatch);
 		
 		
 		paintGroup = new Group();
-		stage.addActor(paintGroup);
+		paintGroup.setSize(SV.WINDOW_WIDTH, SV.WINDOW_HEIGHT);
+		gameStage.addActor(paintGroup);
 		
 		//调试信息
 		if(DEBUG){
@@ -63,7 +70,7 @@ public abstract class BaseScene implements Screen {
 				}
 				
 			};
-			stage.addActor(debugGroup);
+			uiStage.addActor(debugGroup);
 		}
 		
 	}
@@ -85,21 +92,23 @@ public abstract class BaseScene implements Screen {
 			delayTime -= SV.PHYSICS_TIME_SPAN;
 			PWM.instance().step(delta);
 			TM.instance().step(delta);	
-			stage.act(delta);
+			gameStage.act(delta);
+			uiStage.act(delta);
 		}
 		
-		stage.draw();
-		
+		gameStage.draw();
+		uiStage.draw();
 		//调试信息
 		if(DEBUG){
-			batch.begin();
-			font.draw(batch, "DrawCalls : " + numDrawCalls, 20, 100);
-			font.draw(batch, "NativeHeap: " + Gdx.app.getNativeHeap() / 1024f / 1024f + " Mb", 20, 70);
-			font.draw(batch, "JavaHeap  : " + Gdx.app.getJavaHeap()/1024f/1024f + " Mb", 20, 40);
-			batch.end();
+			uiBatch.begin();
+			font.draw(uiBatch, "DrawCalls : " + numDrawCalls, 20, 100);
+			font.draw(uiBatch, "NativeHeap: " + Gdx.app.getNativeHeap() / 1024f / 1024f + " Mb", 20, 70);
+			font.draw(uiBatch, "JavaHeap  : " + Gdx.app.getJavaHeap()/1024f/1024f + " Mb", 20, 40);
+			uiBatch.end();
 			
 			numDrawCalls = 0;
 		}
+
 	}
 
 	@Override
@@ -111,7 +120,10 @@ public abstract class BaseScene implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		Gdx.input.setInputProcessor(stage);
+		InputMultiplexer multiplexer = new InputMultiplexer();
+		multiplexer.addProcessor(uiStage);
+		multiplexer.addProcessor(gameStage);
+		Gdx.input.setInputProcessor(multiplexer);
 	}
 
 	@Override
@@ -135,22 +147,30 @@ public abstract class BaseScene implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		if(stage != null){
-			stage.dispose();
-			stage = null;
+		if(gameStage != null){
+			gameStage.dispose();
+			gameStage = null;
 		}
 		
-		if(batch != null){
-			batch.dispose();
-			batch = null;
+		if(gameBatch != null){
+			gameBatch.dispose();
+			gameBatch = null;
 		}
 
+		if(uiStage != null){
+			uiStage.dispose();
+			uiStage = null;
+		}
+		
+		if(uiBatch != null){
+			uiBatch.dispose();
+			uiBatch = null;
+		}
 		if(font != null){
 			font.dispose();
 			font = null;
 		}
 	}
-	
 	
 	//响应返回键消息
 	public void onBack(){

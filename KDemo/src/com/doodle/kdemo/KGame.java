@@ -15,7 +15,7 @@ public class KGame extends Game {
 		LM.instance().setLogLevel(SV.LOG_DEBUG);
 		
 		SceneData sceneData = new SceneData();
-		sceneData.sceneId = SV.SCENE_GAME;
+		sceneData.sceneId = SV.SCENE_LOADING;
 		GM.instance().changeScene(sceneData);
 	}
 

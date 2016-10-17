@@ -3,7 +3,7 @@
 <bodydef version="1.0">
 	<bodies>
 
-		<body name="level2_bg1">
+		<body name="bg1">
             <anchorpoint>0.0000,0.0000</anchorpoint>
 			<fixtures>
 
@@ -32,7 +32,7 @@
 			</fixtures>
 		</body>
 
-		<body name="level2_bg2">
+		<body name="bg2">
             <anchorpoint>0.0000,0.0000</anchorpoint>
 			<fixtures>
 
@@ -85,7 +85,7 @@
 			</fixtures>
 		</body>
 
-		<body name="level2_bg3">
+		<body name="bg3">
             <anchorpoint>0.0000,0.0000</anchorpoint>
 			<fixtures>
 

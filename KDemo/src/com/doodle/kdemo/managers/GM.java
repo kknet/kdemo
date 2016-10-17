@@ -2,6 +2,7 @@ package com.doodle.kdemo.managers;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
+import com.doodle.kdemo.common.GameSceneData;
 import com.doodle.kdemo.common.SceneData;
 import com.doodle.kdemo.scenes.BaseScene;
 import com.doodle.kdemo.scenes.GameScene;
@@ -85,20 +86,23 @@ public class GM {
 			nextScene = new SelectLevelScene();
 			break;
 		case SV.SCENE_GAME:
-			nextScene = new GameScene();
+			nextScene = new GameScene((GameSceneData)sceneData);
 			break;
 		case SV.SCENE_RESULT:
 			nextScene = new ResultScene();
 			break;
 		}
 		
+
 		//ÇÐ»»³¡¾°
 		if(nextScene != null){
-			Screen curScreen = g_game.getScreen();
+			Screen curScreen = g_game.getScreen();	
+			
+			g_game.setScreen(nextScene);
+			
 			if(curScreen != null){
 				curScreen.dispose();
 			}
-			g_game.setScreen(nextScene);
 			lastSceneData = currentSceneData;
 			currentSceneData = sceneData;
 		}

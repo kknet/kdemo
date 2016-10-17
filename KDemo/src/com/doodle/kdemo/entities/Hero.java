@@ -91,9 +91,7 @@ public class Hero extends BaseActor {
 			this.lastPos.y = this.getY();
 			
 		}				
-		
-		System.out.println("x=" + this.getX());
-		System.out.println("y=" + this.getY());
+
 		heroSkeleton.setPosition(this.getX(), this.getY());
 		
 		state.update(delta);	
